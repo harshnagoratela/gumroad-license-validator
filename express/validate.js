@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
 //router.post('/', (req, res) => res.json({ postBody: req.body }));
 router.post('/', function (req, res) {
   
-  //console.log(req.query);
-	
+  //cors related changes
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST')
+  
   axios.post("https://api.gumroad.com/v2/licenses/verify?product_permalink="+req.query.product_permalink+"&license_key="+req.query.license_key)
   .then(response => {
 	console.log(response.data)
