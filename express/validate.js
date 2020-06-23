@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 //router.post('/', (req, res) => res.json({ postBody: req.body }));
 router.post('/', function (req, res) {
   
-  console.log(req.params);
+  //console.log(req.query);
 	
-  axios.post("https://api.gumroad.com/v2/licenses/verify?product_permalink=WHvhf1&license_key=C9B83BEC-DC1A43C1-9CBFF146-7A2277DE")
+  axios.post("https://api.gumroad.com/v2/licenses/verify?product_permalink="+req.query.product_permalink+"&license_key="+req.query.license_key)
   .then(response => {
 	console.log(response.data)
 	res.json(response.data)
